@@ -1,5 +1,5 @@
 import random
-open()   # Vous pouvez utiliser une liste de mots pour les passphrases
+import wordlist  # on peut utiliser une liste de mots pour les passphrases
 
 class PassphraseGenerator:
     def __init__(self, num_words):
