@@ -1,32 +1,19 @@
-# à lancer
-import random
-from question import Question
-from quiz import Quiz
+from password import Password
+from password_generator import PasswordGenerator
+from passphrase_generator import PassphraseGenerator
 
-# Les questions
-questions = [
-    Question("Quelle est la capitale de la France?", ["a) Paris", "b) Londres", "c) Berlin"], "a"),
-    Question("Quel est le plus grand océan du monde?", ["a) Océan Atlantique", "b) Océan Indien", "c) Océan Pacifique"], "c"),
-    Question("Combien de continents y a-t-il sur Terre?", ["a) 5", "b) 6", "c) 7"], "b"),
-    Question("Qui a peint la Mona Lisa?", ["a) Vincent van Gogh", "b) Pablo Picasso", "c) Leonardo da Vinci"], "c"),
-    Question("Quelle est la plus haute montagne du monde?", ["a) Mont Kilimandjaro", "b) Mont Everest", "c) Mont McKinley"], "b"),
-    Question("Quel gaz compose la majeure partie de l'atmosphère terrestre?", ["a) Oxygène", "b) Azote", "c) Dioxyde de carbone"], "b"),
-    Question("Quel élément chimique a le symbole 'H'?", ["a) Hydrogène", "b) Hélium", "c) Argon"], "a"),
-    Question("Qui a écrit 'Romeo et Juliette'?", ["a) William Shakespeare", "b) Charles Dickens", "c) Jane Austen"], "a"),
-    Question("Quel est le symbole chimique de l'or?", ["a) Ag", "b) Au", "c) Cu"], "b"),
-    Question("Quel pays est célèbre pour sa Grande Muraille?", ["a) Japon", "b) Chine", "c) Inde"], "b"),
-    # Ajoute d'autres questions ici
-]
+# Exemple d'utilisation
+user_password = input("Entrez un mot de passe à tester : ")
+password_tester = Password(user_password)
+strength = password_tester.get_strength()
+print(f"Force du mot de passe : {strength}")
 
-# Crée le quiz
-quiz = Quiz(questions)
+# Exemple de génération de mot de passe
+generator = PasswordGenerator(length=12, num_lower=4, num_upper=2, num_digits=2, num_special=2)
+generated_password = generator.generate_password()
+print(f"Mot de passe généré : {generated_password}")
 
-# Mélangez les questions
-random.shuffle(questions)
-
-# Passe le quiz
-quiz.take_quiz()
-
-# Affichez le score final et les réponses correctes
-quiz.display_score()
-quiz.display_answers()
+# Exemple de génération de passphrase
+passphrase_generator = PassphraseGenerator(num_words=5)
+generated_passphrase = passphrase_generator.generate_passphrase()
+print(f"Passphrase générée : {generated_passphrase}")
